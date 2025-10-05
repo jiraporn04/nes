@@ -1,0 +1,198 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        32
+      ],
+      "id": "36445a52-bd33-4f4e-8da5-9d29cadc8341",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "E1e7XjlFGDEVzTKU",
+          "mode": "list",
+          "cachedResultName": "Rssdateteble",
+          "cachedResultUrl": "/projects/MBajQsipt7hRA6H4/datatables/E1e7XjlFGDEVzTKU"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "new": "={{ $json['content:encoded'] }}"
+          },
+          "matchingColumns": [
+            "new"
+          ],
+          "schema": [
+            {
+              "id": "new",
+              "displayName": "new",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        0,
+        144
+      ],
+      "id": "dea51054-898d-4787-b5cc-4849b2f5dd50",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techtalkthai.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        -80
+      ],
+      "id": "36d4c0e0-d077-40fd-93a1-539e108382ad",
+      "name": "Tech-It-News"
+    },
+    {
+      "parameters": {
+        "url": "https://droidsans.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        96
+      ],
+      "id": "c5d9f654-2cf5-4ffa-a960-18816e5177f9",
+      "name": "Droidsans"
+    },
+    {
+      "parameters": {
+        "url": "https://www.srtet.co.th/rss/news",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -368,
+        272
+      ],
+      "id": "65eb7d55-e4df-4cc6-8c94-2e62a172d4e4",
+      "name": "Srtet"
+    },
+    {
+      "parameters": {
+        "url": "https://www.nso.go.th/nsoweb/main/rssfeed/get_data/A",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -368,
+        448
+      ],
+      "id": "c7b36674-d518-4f96-bae5-bcef504e990c",
+      "name": "NSO"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Tech-It-News",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Droidsans",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Srtet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NSO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech-It-News": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Droidsans": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Srtet": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NSO": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "451a1e81-270f-4f68-85d1-5b3c97dd15b7",
+  "meta": {
+    "instanceId": "d3bf557c7b58defef071bebb369387dd61ff05ed7285dd9e3ff2809414651afe"
+  },
+  "id": "eQkCUAUoo4zd2daV",
+  "tags": []
+}
